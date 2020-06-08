@@ -1,7 +1,10 @@
-export const home = (req, res) =>
-  res.send(`this is home from video controller`);
-export const search = (req, res) =>
-  res.send(`this is search from video controller`);
+export const home = (req, res) => res.render("home", { pageTitle: "Home" });
+export const search = (req, res) => {
+  const {
+    query: { term: searchingBy },
+  } = req;
+  res.render("search", { pageTitle: "search", searchingBy });
+};
 
 export const video = (req, res) =>
   res.send(`this is video from videoController`);
