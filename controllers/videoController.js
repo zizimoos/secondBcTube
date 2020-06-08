@@ -1,18 +1,30 @@
-export const home = (req, res) => res.render("home", { pageTitle: "Home" });
+import { videos } from "../db";
+import routes from "../routes";
+
+export const home = (req, res) => {
+  res.render("home", { pageTitle: "Home", videos });
+};
 export const search = (req, res) => {
   const {
     query: { term: searchingBy },
   } = req;
-  res.render("search", { pageTitle: "search", searchingBy });
+  res.render("search", { pageTitle: "search", searchingBy, videos });
 };
 
-export const video = (req, res) =>
-  res.send(`this is video from videoController`);
-export const upload = (req, res) =>
-  res.send(`this is upload from videoController`);
+export const getUpload = (req, res) =>
+  res.render("upload", { pageTitle: "Upload" });
+export const postUpload = (req, res) => {
+  console.log(req.body);
+  const {
+    body: { file, title, description },
+  } = req;
+  // to do : upload and save
+  res.redirect(routes.videoDetail(55555));
+};
+
 export const videoDetail = (req, res) =>
-  res.send(`this is videoDetail from videoController`);
+  res.render("videoDetail", { pageTitle: "videoDetail" });
 export const editVideo = (req, res) =>
-  res.send(`this is editVideo from videoController`);
+  res.render("editVideo", { pageTitle: "Edit Video" });
 export const deleteVideo = (req, res) =>
   res.send(`this is deleteVideo from videoController`);

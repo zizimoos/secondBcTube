@@ -1,5 +1,8 @@
 # bcTube
 
-## pages
+## pages:
 
-- [] HOME
+- [x] HOME
+- [ ] SEARCH
+- [ ] JOIN
+- [ ] LOGIN  
