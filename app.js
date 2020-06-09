@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(morgan("dev"));
+app.use("/uploads", express.static("uploads"));
 
 app.use(localMiddlewares);
 app.use(routes.home, globalRouter);

@@ -2,3 +2,16 @@ extends layout/main
 
 block content
     p video detail
+    .video__player
+        video(src=`/${video.fileUrl}`, controls=true, width=600)
+    .video__info
+        h4.videoBlock__title= video.title 
+        h4.videoBlock__views= video.views 
+        h4.videoBlock__description= video.description
+        h4.videoBlock__createAt= video.createAt 
+        a(href=routes.editVideo(video._id)) EditVideo
+    .video__comments
+        if video.comments.length === 1
+            span.video__comment-number 1 comment
+        else
+            span.video__comment-number #{video.comments.length} comments
